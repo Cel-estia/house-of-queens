@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The House of Queens - a luxury digital house celebrating style, confidence and individuality.">
+  <title>The House of Queens</title>
+  <style>
+    :root{
+      --pink:#e91e78;
+      --pink-soft:#f8d8e8;
+      --rose:#b72a62;
+      --black:#0b090b;
+      --cream:#fffafc;
+      --silver:#c8c3c8;
+      --muted:#746b72;
+      --line:rgba(11,9,11,.12);
+      --shadow:0 20px 60px rgba(22,8,18,.12);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Georgia,"Times New Roman",serif;
+      color:var(--black);
+      background:var(--cream);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .announcement{
+      background:var(--black);color:white;text-align:center;
+      padding:9px 18px;font:11px/1.2 Arial,sans-serif;
+      letter-spacing:2px;text-transform:uppercase;
+    }
+    header{
+      position:sticky;top:0;z-index:20;
+      background:rgba(255,250,252,.94);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--line);
+    }
+    nav{
+      max-width:1250px;margin:auto;padding:18px 28px;
+      display:flex;align-items:center;justify-content:space-between;gap:20px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;font-weight:bold;
+      letter-spacing:1.5px;text-transform:uppercase;font-size:13px;
+    }
+    .brand img{width:48px;height:48px;object-fit:contain;border-radius:50%}
+    .links{display:flex;gap:28px;font:12px Arial,sans-serif;letter-spacing:1.4px;text-transform:uppercase}
+    .links a{position:relative;padding:5px 0}
+    .links a:after{
+      content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--pink);
+      transition:.3s
+    }
+    .links a:hover:after{width:100%}
+    .menu{display:none;border:0;background:none;font-size:25px}
+    .hero{
+      min-height:calc(100vh - 92px);
+      display:grid;grid-template-columns:1.05fr .95fr;
+      overflow:hidden;
+    }
+    .hero-copy{
+      padding:clamp(55px,9vw,120px) clamp(28px,7vw,100px);
+      display:flex;flex-direction:column;justify-content:center;
+      background:
+        radial-gradient(circle at 20% 20%,rgba(233,30,120,.16),transparent 32%),
+        linear-gradient(145deg,#fffafd,#f6d7e6);
+    }
+    .eyebrow{
+      font:11px Arial,sans-serif;letter-spacing:4px;text-transform:uppercase;
+      color:var(--rose);margin-bottom:18px;
+    }
+    h1{
+      font-size:clamp(58px,8vw,112px);line-height:.88;
+      font-weight:500;margin:0 0 28px;letter-spacing:-4px;
+    }
+    .hero-copy p{max-width:560px;font-size:19px;color:#4e454b}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+    .btn{
+      padding:14px 22px;border:1px solid var(--black);
+      font:11px Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;
+      transition:.25s;cursor:pointer;
+    }
+    .btn.primary{background:var(--black);color:#fff}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(0,0,0,.12)}
+    .hero-art{
+      min-height:650px;display:flex;align-items:center;justify-content:center;
+      background:#050505;position:relative;overflow:hidden;
+    }
+    .hero-art:before{
+      content:"";position:absolute;inset:10%;
+      background:radial-gradient(circle,rgba(233,30,120,.32),transparent 58%);
+      filter:blur(35px);
+    }
+    .hero-art img{
+      position:relative;width:min(78%,650px);
+      filter:drop-shadow(0 35px 35px rgba(233,30,120,.25));
+      animation:float 5s ease-in-out infinite;
+    }
+    @keyframes float{50%{transform:translateY(-8px) rotate(.4deg)}}
+    section{padding:100px 7vw}
+    .section-head{max-width:700px;margin-bottom:50px}
+    .section-head .eyebrow{margin-bottom:10px}
+    h2{font-size:clamp(38px,5vw,64px);font-weight:500;line-height:1;margin:0 0 16px}
+    .section-head p{color:var(--muted);font-size:17px}
+    .cards{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+      max-width:1250px;margin:auto;
+    }
+    .card{
+      min-height:420px;position:relative;overflow:hidden;
+      background:linear-gradient(145deg,#171217,#351025);
+      color:#fff;box-shadow:var(--shadow);
+    }
+    .card:nth-child(2){background:linear-gradient(145deg,#f1b4cf,#7d1d48);color:#160b10}
+    .card:nth-child(3){background:linear-gradient(145deg,#ddd7dc,#6c6570);color:#100d10}
+    .card-content{position:absolute;inset:0;padding:30px;display:flex;flex-direction:column;justify-content:flex-end}
+    .card-number{font:11px Arial,sans-serif;letter-spacing:3px;opacity:.7}
+    .card h3{font-size:34px;margin:8px 0}
+    .card p{max-width:280px;opacity:.82}
+    .card a{margin-top:16px;font:11px Arial,sans-serif;letter-spacing:2px;text-transform:uppercase}
+    .manifesto{
+      background:var(--black);color:#fff;display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;
+      align-items:center;
+    }
+    .manifesto h2{color:#fff}
+    .manifesto p{font-size:21px;color:#ddd;max-width:700px}
+    .seal{
+      width:min(320px,70vw);aspect-ratio:1;margin:auto;border:1px solid #777;border-radius:50%;
+      display:grid;place-items:center;position:relative;
+    }
+    .seal:before,.seal:after{content:"";position:absolute;inset:15px;border:1px solid #555;border-radius:50%}
+    .seal:after{inset:35px;border-color:#e91e78}
+    .seal span{text-align:center;text-transform:uppercase;letter-spacing:4px;font:12px Arial,sans-serif}
+    .journal{background:#f5edf2}
+    .journal-grid{display:grid;grid-template-columns:1.4fr .8fr .8fr;gap:18px}
+    .story{background:#fff;min-height:370px;padding:32px;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:var(--shadow)}
+    .story:first-child{background:linear-gradient(160deg,#e91e78,#210914);color:#fff}
+    .story h3{font-size:32px;margin:8px 0}
+    .story small{font:10px Arial,sans-serif;letter-spacing:2px;text-transform:uppercase}
+    .newsletter{text-align:center;background:#fff}
+    .newsletter form{max-width:600px;margin:28px auto 0;display:flex;border-bottom:1px solid var(--black)}
+    .newsletter input{flex:1;border:0;background:transparent;padding:15px;font:16px Georgia,serif;outline:0}
+    .newsletter button{border:0;background:var(--black);color:#fff;padding:0 22px;font:11px Arial,sans-serif;letter-spacing:2px;text-transform:uppercase}
+    footer{background:#080709;color:#eee;padding:55px 7vw}
+    .footer-grid{max-width:1250px;margin:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px}
+    footer h3{font-size:25px;margin:0 0 12px}
+    footer p,footer a{color:#aaa;font:13px/1.8 Arial,sans-serif}
+    .copyright{border-top:1px solid #29262a;margin-top:40px;padding-top:20px;color:#777;font:10px Arial,sans-serif;letter-spacing:1px}
+    @media(max-width:850px){
+      .links{display:none}.menu{display:block}
+      .hero{grid-template-columns:1fr}
+      .hero-art{min-height:460px;order:-1}
+      .cards,.journal-grid,.manifesto,.footer-grid{grid-template-columns:1fr}
+      section{padding:75px 6vw}
+      .manifesto{gap:40px}
+      .newsletter form{flex-direction:column;border:0;gap:10px}
+      .newsletter input{border-bottom:1px solid var(--black)}
+      .newsletter button{padding:14px}
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">THE HOUSE IS OPEN · A NEW ERA OF QUEENHOOD</div>
+
+  <header>
+    <nav>
+      <a class="brand" href="#home">
+        <img src="assets/house-of-queens-logo.png" alt="House of Queens crest">
+        <span>The House of Queens</span>
+      </a>
+      <div class="links">
+        <a href="#collections">Collections</a>
+        <a href="#house">The House</a>
+        <a href="#journal">Journal</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="menu" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow">Luxury · Identity · Power</div>
+        <h1>Wear your<br>crown.</h1>
+        <p>
+          The House of Queens is a modern luxury house built around one idea:
+          every woman deserves to feel seen, celebrated and completely herself.
+        </p>
+        <div class="buttons">
+          <a class="btn primary" href="#collections">Enter the House</a>
+          <a class="btn" href="#house">Discover the Story</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <img src="assets/house-of-queens-logo.png" alt="The House of Queens emblem">
+      </div>
+    </section>
+
+    <section id="collections">
+      <div class="section-head">
+        <div class="eyebrow">The Collections</div>
+        <h2>Three ways to wear the crown.</h2>
+        <p>
+          Start with a small, focused product universe instead of trying to sell everything.
+          The first House can be built around statement fashion, jewellery and signature accessories.
+        </p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-content">
+            <div class="card-number">01 · THE REGAL EDIT</div>
+            <h3>Statement Wear</h3>
+            <p>Occasion pieces, elegant silhouettes and signature details designed to command a room.</p>
+            <a href="#contact">View the edit →</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-content">
+            <div class="card-number">02 · THE CROWNED EDIT</div>
+            <h3>Jewellery</h3>
+            <p>Bold, feminine pieces that become part of your identity rather than simply an accessory.</p>
+            <a href="#contact">Explore jewellery →</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-content">
+            <div class="card-number">03 · THE HOUSE EDIT</div>
+            <h3>Signature Pieces</h3>
+            <p>Bags, scarves and keepsakes that make the House recognisable at a glance.</p>
+            <a href="#contact">Discover signatures →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="manifesto" id="house">
+      <div class="seal"><span>The House<br>of Queens<br>Est. 2026</span></div>
+      <div>
+        <div class="eyebrow">The House</div>
+        <h2>Luxury with a reason to exist.</h2>
+        <p>
+          The House of Queens should not feel like another online shop.
+          It should feel like entering a world. The brand combines fashion,
+          storytelling and confidence, giving every collection a point of view.
+        </p>
+        <p>
+          Our future can extend beyond products: private previews, styling stories,
+          creative collaborations, a Queen's Journal and a community built around
+          ambition, individuality and self-expression.
+        </p>
+      </div>
+    </section>
+
+    <section class="journal" id="journal">
+      <div class="section-head">
+        <div class="eyebrow">The Queen's Journal</div>
+        <h2>A magazine, not a noticeboard.</h2>
+        <p>Use the journal to give the House a voice and make the website useful even when visitors are not shopping.</p>
+      </div>
+      <div class="journal-grid">
+        <article class="story">
+          <small>House Notes · 01</small>
+          <h3>What does it mean to dress like yourself?</h3>
+          <p>Editorial stories about confidence, identity, styling and the art of becoming.</p>
+        </article>
+        <article class="story">
+          <small>Style · 02</small>
+          <h3>Building a signature look</h3>
+          <p>Simple guides that help readers create a wardrobe with personality.</p>
+        </article>
+        <article class="story">
+          <small>Behind the House · 03</small>
+          <h3>From sketch to statement</h3>
+          <p>Show the creative process behind future House pieces.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="newsletter" id="contact">
+      <div class="eyebrow">Join the House</div>
+      <h2>Be first through the doors.</h2>
+      <p>Join the list for collection previews, journal stories and private House announcements.</p>
+      <form onsubmit="joinHouse(event)">
+        <input id="email" type="email" placeholder="Your email address" required>
+        <button type="submit">Join</button>
+      </form>
+      <p id="message" style="font-size:13px;color:#b72a62;min-height:20px"></p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h3>The House of Queens</h3>
+        <p>A modern luxury house for women who refuse to shrink themselves.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <p><a href="#collections">Collections</a><br><a href="#house">Our Story</a><br><a href="#journal">Queen's Journal</a></p>
+      </div>
+      <div>
+        <h3>Connect</h3>
+        <p>Instagram · TikTok · Pinterest<br>hello@thehouseofqueens.com</p>
+      </div>
+    </div>
+    <div class="copyright">© 2026 THE HOUSE OF QUEENS · ALL RIGHTS RESERVED</div>
+  </footer>
+
+  <script>
+    function toggleMenu(){
+      const links=document.querySelector('.links');
+      const open=links.style.display==='flex';
+      links.style.display=open?'none':'flex';
+      links.style.position='absolute';
+      links.style.top='78px';
+      links.style.left='0';
+      links.style.right='0';
+      links.style.padding='22px';
+      links.style.background='#fffafc';
+      links.style.flexDirection='column';
+    }
+    function joinHouse(e){
+      e.preventDefault();
+      const email=document.getElementById('email').value;
+      document.getElementById('message').textContent =
+        'Welcome to the House. ' + email + ' has been added to the preview list.';
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>

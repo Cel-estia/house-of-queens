@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House of Queens | Official Site</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0d0d0d;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(13, 13, 13, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #ff4da633;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #ff4da6;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px #ff4da688;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff4da6;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: radial-gradient(circle, rgba(255,77,166,0.15) 0%, rgba(13,13,13,1) 70%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            color: #cccccc;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .badge {
+            background-color: #ff4da6;
+            color: #000000;
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 20px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .cta-btn {
+            padding: 14px 32px;
+            background: transparent;
+            color: #ff4da6;
+            border: 2px solid #ff4da6;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: 0.3s;
+            box-shadow: 0 0 15px rgba(255, 77, 166, 0.3);
+            text-decoration: none;
+        }
+
+        .cta-btn:hover {
+            background: #ff4da6;
+            color: #000000;
+            box-shadow: 0 0 25px rgba(255, 77, 166, 0.8);
+        }
+
+        /* Roster Section */
+        .roster {
+            padding: 100px 8%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #ff4da6;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            font-size: 0.95rem;
+            color: #aaaaaa;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #333333;
+            border-radius: 12px;
+            padding: 40px 20px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: #ff4da6;
+            transform: translateY(-5px);
+        }
+
+        .card-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #ff4da633;
+            border: 2px solid #ff4da6;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #ff4da6;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 0.85rem;
+            color: #888888;
+            text-transform: uppercase;
+        }
+
+        /* Recruitment Section */
+        .apply-section {
+            padding: 80px 8%;
+            background: #111111;
+            border-top: 1px solid #222222;
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 550px;
+            margin: 0 auto;
+            background: #181818;
+            padding: 40px 30px;
+            border-radius: 16px;
+            border: 1px solid #333333;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            color: #cccccc;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: #0d0d0d;
+            border: 1px solid #333333;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            border-color: #ff4da6;
+            box-shadow: 0 0 8px rgba(255, 77, 166, 0.4);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: #ff4da6;
+            color: #000000;
+            border: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #e60073;
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(255, 77, 166, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid #222;
+            color: #555555;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-text">House of Queens</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#roster">The Roster</a></li>
+            <li><a href="#apply">Apply to Model</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="about">
+        <span class="badge">Est. 2026 • Official Realm</span>
+        <h1>Empowerment Through Style</h1>
+        <p>House of Queens is an exclusive fashion collective and creative hub dedicated to scouting, elevating, and empowering female talent. Official collection rollouts launch in 2027.</p>
+        <a href="#apply" class="cta-btn">Become a Model</a>
+    </section>
+
+    <section class="roster" id="roster">
+        <h2 class="section-title">The Model Roster</h2>
+        <p class="section-subtitle">Our growing collective of featured talent and muses</p>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="card-avatar">👑</div>
+                <h3>Model Profile</h3>
+                <p>House Collective</p>
+            </div>
+            <div class="card">
+                <div class="card-avatar">👑</div>
+                <h3>Model Profile</h3>
+                <p>House Collective</p>
+            </div>
+            <div class="card">
+                <div class="card-avatar">👑</div>
+                <h3>Model Profile</h3>
+                <p>House Collective</p>
+            </div>
+            <div class="card">
+                <div class="card-avatar">👑</div>
+                <h3>Model Profile</h3>
+                <p>House Collective</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="apply-section" id="apply">
+        <h2 class="section-title">Model Recruitment</h2>
+        <p class="section-subtitle">Think you have what it takes? Apply to join the collective.</p>
+        
+        <div class="form-container">
+            <form onsubmit="event.preventDefault(); alert('Application Received! We will review your submission shortly.');">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label>Instagram / TikTok Handle</label>
+                    <input type="text" placeholder="@yourhandle" required>
+                </div>
+                <div class="form-group">
+                    <label>WhatsApp / Phone Number</label>
+                    <input type="tel" placeholder="+27 ..." required>
+                </div>
+                <div class="form-group">
+                    <label>Portfolio / Photo Link (Drive/Dropbox)</label>
+                    <input type="url" placeholder="https://">
+                </div>
+                <div class="form-group">
+                    <label>Why do you want to join House of Queens?</label>
+                    <textarea rows="4" placeholder="Tell us briefly about yourself and your modeling goals..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 House of Queens. All Rights Reserved. Designed for Future Icons.</p>
+    </footer>
+
+</body>
+</html>
