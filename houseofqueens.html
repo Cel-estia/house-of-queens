@@ -23,7 +23,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 8%;
+            padding: 15px 8%;
             background: rgba(13, 13, 13, 0.95);
             position: fixed;
             width: 100%;
@@ -32,13 +32,11 @@
             border-bottom: 1px solid #ff4da633;
         }
 
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            color: #ff4da6;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px #ff4da688;
+        .logo-img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            display: block;
         }
 
         .nav-links {
@@ -271,7 +269,9 @@
 <body>
 
     <nav>
-        <div class="logo-text">House of Queens</div>
+        <a href="#about">
+            <img src="house-of-queens-logo.png" alt="House of Queens Logo" class="logo-img">
+        </a>
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#roster">The Roster</a></li>
@@ -319,26 +319,26 @@
         <p class="section-subtitle">Think you have what it takes? Apply to join the collective.</p>
         
         <div class="form-container">
-            <form onsubmit="event.preventDefault(); alert('Application Received! We will review your submission shortly.');">
+            <form action="https://formspree.io/f/tallcelestia@gmail.com" method="POST">
                 <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" placeholder="Enter your full name" required>
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="Full Name" placeholder="Enter your full name" required>
                 </div>
                 <div class="form-group">
-                    <label>Instagram / TikTok Handle</label>
-                    <input type="text" placeholder="@yourhandle" required>
+                    <label for="handle">Instagram / TikTok Handle</label>
+                    <input type="text" id="handle" name="Social Handle" placeholder="@yourhandle" required>
                 </div>
                 <div class="form-group">
-                    <label>WhatsApp / Phone Number</label>
-                    <input type="tel" placeholder="+27 ..." required>
+                    <label for="phone">WhatsApp / Phone Number</label>
+                    <input type="tel" id="phone" name="Phone Number" placeholder="+27 ..." required>
                 </div>
                 <div class="form-group">
-                    <label>Portfolio / Photo Link (Drive/Dropbox)</label>
-                    <input type="url" placeholder="https://">
+                    <label for="portfolio">Portfolio / Photo Link (Drive/Dropbox)</label>
+                    <input type="url" id="portfolio" name="Portfolio Link" placeholder="https://">
                 </div>
                 <div class="form-group">
-                    <label>Why do you want to join House of Queens?</label>
-                    <textarea rows="4" placeholder="Tell us briefly about yourself and your modeling goals..."></textarea>
+                    <label for="statement">Why do you want to join House of Queens?</label>
+                    <textarea id="statement" name="Application Statement" rows="4" placeholder="Tell us briefly about yourself and your modeling goals..."></textarea>
                 </div>
                 <button type="submit" class="submit-btn">Submit Application</button>
             </form>
